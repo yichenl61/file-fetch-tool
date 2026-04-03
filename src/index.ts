@@ -1,14 +1,11 @@
-import { renderHtml } from "./renderHtml";
-
 export default {
 	async fetch(request, env) {
-		const stmt = env.DB.prepare("SELECT * FROM comments LIMIT 3");
-		const { results } = await stmt.all();
+		const url = new URL(request.url);
 
-		return new Response(renderHtml(JSON.stringify(results, null, 2)), {
-			headers: {
-				"content-type": "text/html",
-			},
-		});
+		if (url.pathname === "/get") {
+			return new Response("OK", { status: 200 });
+		}
+
+		return new Response("Not Found", { status: 404 });
 	},
 } satisfies ExportedHandler<Env>;

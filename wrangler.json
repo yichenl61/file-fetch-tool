@@ -3,14 +3,31 @@
 	"main": "src/index.ts",
 	"name": "file-fetch-tool",
 	"upload_source_maps": true,
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_id": "475b5c6a-3c89-4d6a-bb09-85e09c3286e1",
-			"database_name": "file-index"
-		}
-	],
 	"observability": {
-		"enabled": true
-	}
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  },
+  "r2_buckets": [
+    {
+      "binding": "file-bucket",
+      "bucket_name": "file-fetch-tool"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "id": "a812f7e5fb2d4ca383cd17637fca4289",
+      "binding": "file-index"
+    }
+  ]
 }
