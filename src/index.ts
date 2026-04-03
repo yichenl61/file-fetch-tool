@@ -1,11 +1,16 @@
+import { Hono } from "hono";
+
+interface Env {
+	fileIndex: KVNamespace;
+	fileBucket: R2Bucket;
+}
+
+const app = new Hono<{ Bindings: Env }>();
+
+app.get("/get", (c) => {
+	return c.json({ status: "OK" });
+});
+
 export default {
-	async fetch(request, env) {
-		const url = new URL(request.url);
-
-		if (url.pathname === "/get") {
-			return new Response("OK", { status: 200 });
-		}
-
-		return new Response("Not Found", { status: 404 });
-	},
+	fetch: app.fetch,
 } satisfies ExportedHandler<Env>;
