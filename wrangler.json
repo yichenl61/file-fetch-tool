@@ -1,0 +1,16 @@
+{
+	"compatibility_date": "2025-10-08",
+	"main": "src/index.ts",
+	"name": "file-fetch-tool",
+	"upload_source_maps": true,
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_id": "475b5c6a-3c89-4d6a-bb09-85e09c3286e1",
+			"database_name": "file-index"
+		}
+	],
+	"observability": {
+		"enabled": true
+	}
+}
